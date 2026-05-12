@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gaurav Anandani | DevOps & Cloud Engineer</title>
+  <style>
+    :root {
+      --primary: #1a73e8;
+      --secondary: #2c3e50;
+      --light: #f9f9fb;
+      --dark: #1a1a1a;
+      --gray: #6b7280;
+      --success: #0d6efd;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.7;
+      color: var(--dark);
+      background-color: #f9fbfd;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      background: white;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 16px 24px;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 28px;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 36px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background-color: var(--primary);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 80px 0 64px;
+      text-align: center;
+      background-color: var(--light);
+      border-bottom: 2px solid #e5e7eb;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 16px;
+      color: var(--secondary);
+      font-weight: 800;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: auto 40px;
+      opacity: 0.9;
+    }
+
+    /* About Section */
+    section {
+      padding: 64px 0;
+      background-color: white;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      color: var(--secondary);
+      margin-bottom: 48px;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      width: 60px;
+      height: 3px;
+      background-color: var(--primary);
+      display: block;
+      margin: 12px auto 0;
+      border-radius: 2px;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 36px;
+      margin-top: 48px;
+    }
+
+    .skill-card {
+      background-color: #f9fbfd;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+      transition: transform 0.3s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .skill-card h3 {
+      font-size: 1.4rem;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    /* Experience Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 50px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 24px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background-color: #e0e0e0;
+      border-radius: 1px;
+    }
+
+    .timeline-item {
+      margin-bottom: 60px;
+      position: relative;
+      padding-left: 24px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -15px;
+      top: 30px;
+      width: 8px;
+      height: 8px;
+      background-color: var(--primary);
+      border-radius: 50%;
+    }
+
+    .timeline-header {
+      font-size: 1.4rem;
+      color: var(--secondary);
+      margin-bottom: 6px;
+    }
+
+    .timeline-date {
+      color: #7c7c7c;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .timeline-desc {
+      line-height: 1.7;
+      opacity: 0.9;
+      font-size: 14px;
+    }
+
+    /* Education */
+    .education-item {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 36px;
+      align-items: center;
+    }
+
+    .edu-year {
+      color: var(--primary);
+      font-weight: bold;
+      min-width: 100px;
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin-top: 56px;
+    }
+
+    .project-card {
+      background-color: #f9fbfd;
+      padding: 28px;
+      border-radius: 12px;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.04);
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .project-title {
+      font-size: 1.2rem;
+      color: var(--secondary);
+      margin-bottom: 8px;
+    }
+
+    /* Contact */
+    .contact-info {
+      display: flex;
+      gap: 30px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .contact-item {
+      background-color: #f9fbfd;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+      font-size: 1rem;
+    }
+
+    .contact-item i {
+      color: var(--primary);
+      margin-right: 8px;
+      font-weight: bold;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      background-color: #1a1a1a;
+      color: white;
+      font-size: 0.9rem;
+    }
+
+    .social-links a {
+      margin-right: 16px;
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--primary);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        gap: 24px;
+        margin-top: 10px;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .skills-grid, .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-info {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-content">
+      <div class="logo">Gaurav Anandani</div>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <h1>DevOps & Cloud Engineer</h1>
+      <p>I design, deploy and scale robust cloud architectures using Kubernetes, Terraform, Docker, and modern DevOps practices. Passionate about building reliable systems that deliver performance at scale.</p>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">Core Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>Kubernetes & Cloud Platforms</h3>
+          <p>Expert in managing Kubernetes clusters on AWS, GCP, and Azure with Helm charts, Istio service mesh, Karpenter auto-scaling.</p>
+        </div>
+        <div class="skill-card">
+          <h3>IaC & Infrastructure Automation</h3>
+          <p>Proficient in Terraform for multi-cloud infrastructure as code; automated deployments across environments using CI/CD pipelines.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Security & Observability</h3>
+          <p>Configured Vault for secrets management, implemented EFK stack (Elasticsearch, Fluentd, Kibana), Prometheus/Grafana dashboards with alerting.</p>
+        </div>
+        <div class="skill-card">
+          <h3>DevOps Tools & CI/CD</h3>
+          <p>Used Jenkins, GitLab CI, Bitbucket Pipelines to automate builds and deployments across microservices architectures.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience">
+    <div class="container">
+      <h2 class="section-title">Work Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-header">HighLevel Platform | Lead Engineer (DevOps)</div>
+          <div class="timeline-date">Jan 2023 – Present</div>
+          <p class="timeline-desc">
+            Implemented Cloudflare WAF, load balancers and custom rules. Designed Istio-based microservices architecture with versioned deployments using Helm charts.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-header">Roadzen | Senior DevOps Engineer</div>
+          <div class="timeline-date">Mar 2021 – Sep 2021</div>
+          <p class="timeline-desc">
+            Built multi-environment Kubernetes clusters via Terraform. Introduced Istio for traffic routing, Vault for secrets, and Velero for backup & DR.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-header">FiftyFive Technologies | DevOps Engineer</div>
+          <div class="timeline-date">Jan 2019 – Feb 2020</div>
+          <p class="timeline-desc">
+            Deployed GKE, EKS and AKS with CI/CD pipelines. Configured Nginx Ingress, logging (EFK), monitoring (Prometheus/Grafana) for full stack observability.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-header">Ambient Infotech | Linux System Admin</div>
+          <div class="timeline-date">2017 – 2019</div>
+          <p class="timeline-desc">
+            Set up EC2 instances with Python CGI, Apache/Nginx, cPanel/WHM. Automated backups and implemented network policies in VPCs.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education">
+    <div class="container">
+      <h2 class="section-title">Education</h2>
+      <div class="education-item">
+        <div class="edu-year">M.C.A.</div>
+        <div>International School of Informatics & Management (R.T.U) – 68.75%</div>
+      </div>
+      <div class="education-item">
+        <div class="edu-year">B.C.A.</div>
+        <div>ApeX Institute of Management & Science (R.U) – 62.87%</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Key Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <p class="project-title">Multi-Cloud Kubernetes Orchestration</p>
+          <p>Designed and deployed scalable microservices using EKS, GKE, AKS with Terraform, Helm charts, and Istio service mesh.</p>
+        </div>
+
+        <div class="project-card">
+          <p class="project-title">Cloud Security & Observability Stack</p>
+          <p>Implemented Vault for secrets management, EFK logging pipeline, Prometheus/Grafana dashboards with automated alerts.</p>
+        </div>
+
+        <div class="project-card">
+          <p class="project-title">Automated CI/CD Pipelines (Jenkins + Terraform)</p>
+          <p>Built agent-based Jenkins pipelines that auto-scale execution nodes based on load, reducing cost by 30% across environments.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact-info">
+        <div class="contact-item">
+          <i>📧</i>Email: gauravanandani@gmail.com
+        </div>
+        <div class="contact-item">
+          <i>📞</i>Phone: +91 9001697768 / +91 8561862657
+        </div>
+        <div class="contact-item">
+          <i>📍</i>Location: Jaipur, Rajasthan
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Gaurav Anandani. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#">LinkedIn</a>
+        <a href="#">GitHub</a>
+        <a href="#">Twitter</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
